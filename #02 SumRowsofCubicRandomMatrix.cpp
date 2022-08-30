@@ -19,31 +19,27 @@ void print2DArrayElements(int arr[3][3]) {
 		cout << endl;
 	}
 }
-void sumMatrixRowElements(int arr[3][3], int result[]) {
-	for (short row = 0; row < 3; row++) {
-		result[row] = 0;
-		for (short j = 0; j < 3; j++) {
-			result[row] = result[row] + arr[row][j];
-		}
+int rowSum(int arr[3][3], int &cols,short &currentRow) {
+	int result = 0;
+	for (short col = 0; col < cols; col++) {
+		result += arr[currentRow][col];
+	}
+	return result;
+}
+void printSumMatrixRowElements(int arr[3][3], int rows, int cols) {
+	for (short row = 0; row < rows; row++) {
+		cout << "Row " << row + 1 << " Sum : " << setw(5) << rowSum(arr,cols,row) << "\n";
+	}
+}
 
-	}
-}
-void printArrayElements(int arr[]) {
-	for (short row = 0; row < 3; row++) {
-		cout << "Row "<<row+1<< " Sum : " <<setw(5) << arr[row] << "\n";
-	}
-	cout << endl;
-}
 int main() {
 	srand((unsigned)time(NULL));
 	int arr[3][3];
-	int sumRows[3];
 	fill2DArrayRandomly(arr);
 	cout << "The following is a 3 * 3 random matrix: \n";
 	print2DArrayElements(arr);
 
-	sumMatrixRowElements(arr, sumRows);
 	cout << "\n\n\nThe following are the sum of each row: \n";
-	printArrayElements(sumRows);
+	printSumMatrixRowElements(arr,3,3);
 	return 0;
 }
