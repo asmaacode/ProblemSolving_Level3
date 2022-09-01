@@ -12,12 +12,10 @@ void fillOrdered2DArray(int arr[rows][cols], int rows, int cols) {
 		}
 
 }
-void transposeMatrix(int arr[rows][cols], int rows, int cols) {
-	short counter = 1;
+void transposeMatrix(int original[rows][cols], int result[rows][cols], int rows, int cols) {
 	for (short row = 0; row < rows; row++) {
 		for (short col = 0; col < cols; col++) {
-			arr[col][row] = counter;
-			counter++;
+			result[col][row] = original[row][col];
 		}
 	}
 
@@ -45,7 +43,7 @@ int main() {
 	cout << "The following is a " << rows << " * " << cols << " ordered matrix: \n";
 	print2DArrayElements(arr);
 
-	transposeMatrix(transposedArr,rows,cols);
+	transposeMatrix(arr,transposedArr,rows,cols);
 
 	cout << "\n\nThe following is a " << rows << " * " << cols << " transposed matrix: \n";
 	print2DArrayElements(transposedArr);
