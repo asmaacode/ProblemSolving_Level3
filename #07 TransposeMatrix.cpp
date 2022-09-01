@@ -1,9 +1,9 @@
 #include<iostream>
 #include<iomanip>
 using namespace std;
-const int rows = 3, cols = 3;
+const short rows = 3, cols = 3;
 
-void fillOrdered2DArray(int arr[rows][cols], int rows, int cols) {
+void fillOrdered2DArray(int arr[rows][cols], short rows, short cols) {
 	short counter = 1;
 	for (short row = 0; row < rows; row++)
 		for (short col = 0; col < cols; col++) {
@@ -12,7 +12,7 @@ void fillOrdered2DArray(int arr[rows][cols], int rows, int cols) {
 		}
 
 }
-void transposeMatrix(int original[rows][cols], int result[rows][cols], int rows, int cols) {
+void transposeMatrix(int original[rows][cols], int result[rows][cols], short rows, short cols) {
 	for (short row = 0; row < rows; row++) {
 		for (short col = 0; col < cols; col++) {
 			result[col][row] = original[row][col];
@@ -20,15 +20,7 @@ void transposeMatrix(int original[rows][cols], int result[rows][cols], int rows,
 	}
 
 }
-void printTranspose2DArray(int arr[rows][cols]) {
-	for (short row = 0; row < rows; row++) {
-		for (short col = 0; col < rows; col++) {
-			cout << setw(3) << arr[col][row] << "   ";
-		}
-		cout << endl;
-	}
-}
-void print2DArrayElements(int arr[rows][cols]) {
+void print2DArrayElements(int arr[rows][cols], short rows, short cols) {
 	for (short row = 0; row < rows; row++) {
 		for (short col = 0; col < rows; col++) {
 			cout << setw(3) << arr[row][col] << "   ";
@@ -41,12 +33,12 @@ int main() {
 	int arr[rows][cols], transposedArr[rows][cols];
 	fillOrdered2DArray(arr,rows,cols);
 	cout << "The following is a " << rows << " * " << cols << " ordered matrix: \n";
-	print2DArrayElements(arr);
+	print2DArrayElements(arr,rows,cols);
 
 	transposeMatrix(arr,transposedArr,rows,cols);
 
 	cout << "\n\nThe following is a " << rows << " * " << cols << " transposed matrix: \n";
-	print2DArrayElements(transposedArr);
+	print2DArrayElements(transposedArr,rows,cols);
 	return 0;
 	//system("pause > 0");
 }
