@@ -41,5 +41,5 @@ int main() {
 
 	cout << "\n\n\nThe following are the sum of each column: \n";
 	printSumMatrixColElements(arr, 3, 3);
-	return 0;
+	system("pause > 0");
 }
