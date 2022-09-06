@@ -22,7 +22,7 @@ void print2DArrayElements(int arr[rows][cols], short rows, short cols) {
 		cout << endl;
 	}
 }
-bool IsExistsInMAtrix(int arr[rows][cols], short rows, short cols, int target) {
+bool IsExistsInMatrix(int arr[rows][cols], short rows, short cols, int target) {
 	for (short row = 0; row < rows; row++) {
 		for (short col = 0; col < rows; col++) {
 			if (target == arr[row][col]) return true;
@@ -35,7 +35,7 @@ int main() {
 	int arr[rows][cols];// = { {1,0,0},{5,3,0},{0,0,0} };
 	fill2DArrayRandomly(arr,rows,cols);
 	print2DArrayElements(arr, rows, cols);
-	if (IsExistsInMAtrix(arr,rows, cols,readNumberMsg("Enter the number to search on it:")))
+	if (IsExistsInMatrix(arr,rows, cols,readNumberMsg("Enter the number to search on it:")))
 		cout << "It is Exists :) \n";
 	else
 		cout << "Not Found :(\n";
