@@ -15,7 +15,7 @@ void fill2DArrayRandomly(int arr[rows][cols], int rows, int cols) {
 }
 void print2DArrayElements(int arr[rows][cols], short rows, short cols) {
 	for (short row = 0; row < rows; row++) {
-		for (short col = 0; col < rows; col++) {
+		for (short col = 0; col < cols; col++) {
 			printf("%0*d", 2, arr[row][col]);
 			cout << setw(4) << "   ";
 		}
@@ -24,7 +24,7 @@ void print2DArrayElements(int arr[rows][cols], short rows, short cols) {
 }
 bool IsExistsInMatrix(int arr[rows][cols], short rows, short cols, int target) {
 	for (short row = 0; row < rows; row++) {
-		for (short col = 0; col < rows; col++) {
+		for (short col = 0; col < cols; col++) {
 			if (target == arr[row][col]) return true;
 		}
 	}
@@ -32,7 +32,7 @@ bool IsExistsInMatrix(int arr[rows][cols], short rows, short cols, int target) {
 }
 void printCommonElementsInTwoMatrices(int arr1[rows][cols],int arr2[rows][cols],int rows,int cols) {
 	for (short row = 0; row < rows; row++) {
-		for (short col = 0; col < rows; col++) {
+		for (short col = 0; col < cols; col++) {
 			if (IsExistsInMatrix(arr2,rows,cols,arr1[row][col])) cout<< arr1[row][col]<<"  ";
 		}
 	}
