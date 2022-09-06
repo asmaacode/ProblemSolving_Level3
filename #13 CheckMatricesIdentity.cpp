@@ -27,7 +27,7 @@ void fill2DArrayIdentity(int arr[rows][cols], int rows, int cols) {
 
 void print2DArrayElements(int arr[rows][cols], short rows, short cols) {
 	for (short row = 0; row < rows; row++) {
-		for (short col = 0; col < rows; col++) {
+		for (short col = 0; col < cols; col++) {
 			printf("%d", arr[row][col]);
 			cout << setw(4) << "   ";
 		}
@@ -37,7 +37,7 @@ void print2DArrayElements(int arr[rows][cols], short rows, short cols) {
 
 bool checkMatricesIdentity(int arr[rows][cols], short rows, short cols) {
 	for (short row = 0; row < rows; row++) {
-		for (short col = 0; col < rows; col++) {
+		for (short col = 0; col < cols; col++) {
 			if ((row == col && arr[row][col] != 1) || (row != col && arr[row][col] != 0)) {
 				return false;
 			}
