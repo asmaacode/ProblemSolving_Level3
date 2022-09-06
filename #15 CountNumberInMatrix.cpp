@@ -17,7 +17,7 @@ void fill2DArrayRandomly(int arr[rows][cols], int rows, int cols) {
 
 void print2DArrayElements(int arr[rows][cols], short rows, short cols) {
 	for (short row = 0; row < rows; row++) {
-		for (short col = 0; col < rows; col++) {
+		for (short col = 0; col < cols; col++) {
 			printf("%0*d",2, arr[row][col]);
 			cout << setw(4) << "   ";
 		}
@@ -28,7 +28,7 @@ void print2DArrayElements(int arr[rows][cols], short rows, short cols) {
 int countNumberInMatrix(int arr[rows][cols], short rows, short cols,int target) {
 	int count = 0;
 	for (short row = 0; row < rows; row++) {
-		for (short col = 0; col < rows; col++) {
+		for (short col = 0; col < cols; col++) {
 			if (target == arr[row][col]) count++;
 		}
 	}
