@@ -35,17 +35,16 @@ int countNumberInMatrix(int arr[rows][cols], short rows, short cols, int target)
 int enterTheTargetNumber() {
 	return(readNumberMsg("Enter the number to count it :"));
 }
-bool IsSparseMatrix(int matrixSize, int zerosCounts) {
-	return zerosCounts > matrixSize - zerosCounts;
+bool IsSparseMatrix(int arr[rows][cols], short rows, short cols) {
+	int matrixSize = cols * rows;
+	return countNumberInMatrix(arr, rows, cols, 0) >= (matrixSize / 2);
 }
 int main() {
 	srand(time(NULL));
 	int arr[rows][cols] = { {1,0,0},{5,3,0},{0,0,0} };
 	//fill2DArrayRandomly(arr,rows,cols);
 	print2DArrayElements(arr, rows, cols);
-	int zerosCounts = countNumberInMatrix(arr, rows, cols, 0);
-	int matrixSize = rows * cols;
-	if (IsSparseMatrix(matrixSize, zerosCounts))
+	if (IsSparseMatrix(arr,rows, cols))
 		cout << "The matrix is a sparse\n";
 	else
 		cout << "The matrix is not a sparse\n";
