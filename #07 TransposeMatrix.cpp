@@ -22,7 +22,7 @@ void transposeMatrix(int original[rows][cols], int result[rows][cols], short row
 }
 void print2DArrayElements(int arr[rows][cols], short rows, short cols) {
 	for (short row = 0; row < rows; row++) {
-		for (short col = 0; col < rows; col++) {
+		for (short col = 0; col < cols; col++) {
 			cout << setw(3) << arr[row][col] << "   ";
 		}
 		cout << endl;
