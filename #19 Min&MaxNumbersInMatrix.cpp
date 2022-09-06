@@ -24,7 +24,7 @@ void print2DArrayElements(int arr[rows][cols], short rows, short cols) {
 }
 bool IsExistsInMatrix(int arr[rows][cols], short rows, short cols, int target) {
 	for (short row = 0; row < rows; row++) {
-		for (short col = 0; col < rows; col++) {
+		for (short col = 0; col < cols; col++) {
 			if (target == arr[row][col]) return true;
 		}
 	}
@@ -33,7 +33,7 @@ bool IsExistsInMatrix(int arr[rows][cols], short rows, short cols, int target) {
 int findMinimumNumberInMatrix(int arr[rows][cols], int rows, int cols) {
 	int min = arr[0][0];
 	for (short row = 0; row < rows; row++) {
-		for (short col = 0; col < rows; col++) {
+		for (short col = 0; col < cols; col++) {
 			if (arr[row][col] < min)min = arr[row][col];
 		}
 	}
@@ -42,7 +42,7 @@ int findMinimumNumberInMatrix(int arr[rows][cols], int rows, int cols) {
 int findMaximumNumberInMatrix(int arr[rows][cols], int rows, int cols) {
 	int max = arr[0][0];
 	for (short row = 0; row < rows; row++) {
-		for (short col = 0; col < rows; col++) {
+		for (short col = 0; col < cols; col++) {
 			if (arr[row][col] > max)max = arr[row][col];
 		}
 	}
