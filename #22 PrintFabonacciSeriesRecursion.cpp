@@ -24,7 +24,7 @@ void print2DArrayElements(int arr[rows][cols], short rows, short cols) {
 }
 void printFabonacciSeries(int num,int prev,int afterPrev) {
 	int answer = 0;
-	if (num >= 0) {
+	if (num > 0) {
 		answer = prev + afterPrev;
 		afterPrev = prev;
 		prev = answer;
@@ -35,5 +35,5 @@ void printFabonacciSeries(int num,int prev,int afterPrev) {
 }
 
 int main() {
-	printFabonacciSeries(5,0,1);
+	printFabonacciSeries(readNumberMsg("Print Fabonacci Series for : "), 0, 1);
 }
