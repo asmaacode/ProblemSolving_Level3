@@ -6,7 +6,7 @@ using namespace myLibrary;
 
 enum enWhatToCount { All = 0, Lowercase = 1, Uppercase = 2 };
 
-short countLetters(string& s, enWhatToCount WhatToCount) {
+short countLetters(string& s, enWhatToCount WhatToCount = enWhatToCount::All) {
 	short count = 0;
 	if (WhatToCount == enWhatToCount::All)
 		count = s.length();
