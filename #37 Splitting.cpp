@@ -4,15 +4,15 @@
 using namespace std;
 using namespace myLibrary;
 
-vector<string> split(string& s, string delimtor = " ") {
+vector<string> split(string& s, string delimiter = " ") {
 	vector<string> words;
-	short slicer = 0;
+	short currentIndex = 0;
 	string word = "";
-	s = s + delimtor;
-	while ((slicer = s.find(delimtor))!= s.npos) {
-		word = s.substr(0, slicer);
-		s = s.substr(slicer + 1, s.length());
-		if (word != "" && word != delimtor)
+	s = s + delimiter;
+	while ((currentIndex = s.find(delimiter)) != s.npos) {
+		word = s.substr(0, currentIndex);
+		s.erase(0, currentIndex + delimiter.length());
+		if (word != "" && word != delimiter)
 			words.push_back(word);
 	}
 	return words;
