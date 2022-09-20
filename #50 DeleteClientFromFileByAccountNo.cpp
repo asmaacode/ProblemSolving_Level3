@@ -16,6 +16,7 @@ struct stClient {
 	string Name = "";
 	string Phone = "";
 	float AccountBalance = 0.0;
+	bool MarkForDelete = false;
 };
 vector<string> split(string& s, string delimiter = " ") {
 	vector<string> words;
@@ -104,25 +105,37 @@ bool searchByAccountNo(string AccountNo, vector<stClient>& clients, stClient& cl
 	}
 	return false;
 }
-string generateLinesAfterDeleteClient(string AccountNo, vector<stClient>& clients) {
+void markClientForDelete(string AccountNo, vector<stClient>& clients) {
+	for (stClient& element : clients) {
+		if (element.AccountNo == AccountNo) {
+			element.MarkForDelete = true;
+			return;
+		}
+	}
+}
+string generateLinesAfterDeleteClient(vector<stClient>& clients) {
 	string lines = "";
 	for (stClient& element : clients) {
-		if (element.AccountNo != AccountNo) {
+		if (!element.MarkForDelete) {
 			lines += convertRecordToLine(element, delimiter) + "\n";
 		}
 	}
 
 	return lines;
 }
+void refreshClientsList(vector<stClient>& clients, string fileName) {
+	clients = generateClientsList(fileName);
+}
 void deleteClientFromFileByAccountNo(string AccountNo, vector<stClient>& clients) {
 	stClient client;
 	if (searchByAccountNo(AccountNo, clients, client)) {
 		cout << "\nThe following are the client details :\n";
 		printClient(client);
-
 		if (doYouQuestion("\nAre you sure you want to delete this client ? ")) {
-			rewriteClientsFile(generateLinesAfterDeleteClient(AccountNo, clients), fileName);
+			markClientForDelete(AccountNo,clients);
+			rewriteClientsFile(generateLinesAfterDeleteClient(clients), fileName);
 			cout << "\nClient deleted successfully.\n";
+			refreshClientsList(clients, fileName);
 		}
 	}
 	else {
