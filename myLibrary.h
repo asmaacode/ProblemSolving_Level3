@@ -6,7 +6,34 @@
 #include <string>
 using namespace std;
 namespace myLibrary {
-	#pragma region read
+	void swap(int& A, int& B) {
+		int temp = A;
+		A = B;
+		B = temp;
+	}
+	void swap(int* A, int* B) {
+		int temp = *A;
+		*A = *B;
+		*B = temp;
+	}
+	bool doYouQuestion(string msg) {
+		char answer = 'N';
+		cout << msg << "[Y / N]";
+		cin >> answer;
+		return ((answer == 'Y' || answer == 'y') ? true : false);
+	}
+	enum enPrimStatus { NotPrime = false, Prime = true };
+	enPrimStatus isPrime(int target) {
+		if (target == 1)
+			return enPrimStatus::Prime;
+		for (int i = 2;i <= sqrt(target);i++) {
+			if (target % i == 0)
+				return enPrimStatus::NotPrime;
+		}
+		return enPrimStatus::Prime;
+
+	}
+	namespace read {
 		int readNumber() {
 			int userNumber = 0;
 			cin >> userNumber;
@@ -82,57 +109,39 @@ namespace myLibrary {
 
 			return number;
 		}
-
-	#pragma endregion
-	
-	enum randomOptions { smallLetter, capitalLetter, specialCharacter, digit };
-	int generateRandomNumbers(int from, int to) {
-		//in main call 	srand(time(NULL));
-		return rand() % (to - from + 1) + from;//OR return (rand() % to) + from;
 	}
-	char getRandomCharachter(randomOptions randomType) {
-		switch (randomType) {
-		case randomOptions::smallLetter:
-			return char(generateRandomNumbers(int('a'), int('z')));
-			break;
-		case randomOptions::capitalLetter:
-			return char(generateRandomNumbers(int('A'), int('Z')));
-			break;
-		case randomOptions::specialCharacter:
-			return (char)generateRandomNumbers(int('Z') + 1, 128);
-			break;
-		case randomOptions::digit:
-			return (char)generateRandomNumbers(48, 57);
-			break;
+	namespace draw {
+		string generateLine(short length = 0, char symbol = '_') {
+			string line = "";
+			while (length != 0) {
+				line += symbol;
+				length--;
+			}
+			return line;
 		}
-	}
-	
-	enum enPrimStatus { NotPrime = false, Prime = true };
-	enPrimStatus isPrime(int target) {
-		if (target == 1)
-			return enPrimStatus::Prime;
-		for (int i = 2;i <= sqrt(target);i++) {
-			if (target % i == 0)
-				return enPrimStatus::NotPrime;
+		string generateTabs(short length = 0) {
+			string tabs = "";
+			while (length != 0) {
+				tabs += " ";
+				length--;
+			}
+			return tabs;
 		}
-		return enPrimStatus::Prime;
 
 	}
-
-	void swap(int& A, int& B) {
-		int temp = A;
-		A = B;
-		B = temp;
-	}
-	void swap(int* A, int* B) {
-		int temp = *A;
-		*A = *B;
-		*B = temp;
-	}
-	bool doYouQuestion(string msg) {
-		char answer = 'N';
-		cout << msg << "[Y / N]";
-		cin >> answer;
-		return ((answer == 'Y' || answer == 'y') ? true : false);
+	namespace manipulators {
+		vector<string> split(string& s, string delimiter = " ") {
+			vector<string> words;
+			int currentIndex = 0;
+			string word = "";
+			s = s + delimiter;
+			while ((currentIndex = s.find(delimiter)) != s.npos) {
+				word = s.substr(0, currentIndex);
+				s.erase(0, currentIndex + delimiter.length());
+				if (word != "" && word != delimiter)
+					words.push_back(word);
+			}
+			return words;
+		}
 	}
 }
