@@ -22,17 +22,6 @@ namespace myLibrary {
 		cin >> answer;
 		return ((answer == 'Y' || answer == 'y') ? true : false);
 	}
-	enum enPrimStatus { NotPrime = false, Prime = true };
-	enPrimStatus isPrime(int target) {
-		if (target == 1)
-			return enPrimStatus::Prime;
-		for (int i = 2;i <= sqrt(target);i++) {
-			if (target % i == 0)
-				return enPrimStatus::NotPrime;
-		}
-		return enPrimStatus::Prime;
-
-	}
 	namespace read {
 		int readNumber() {
 			int userNumber = 0;
@@ -78,7 +67,7 @@ namespace myLibrary {
 		}
 		int readNumberMsg(string msg) {
 			int number = 0;
-			cout << msg << "\n";
+			cout << msg << " ";
 			number = readNumber();
 			return number;
 		}
